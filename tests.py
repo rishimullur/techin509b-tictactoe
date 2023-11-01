@@ -12,7 +12,9 @@ class TestLogic(unittest.TestCase):
         ]
         self.assertEqual(logic.get_winner(board), 'X')
 
-    # TODO: Test all functions from logic.py!
+    def test_other_player(self):
+        player = 'O'
+        self.assertEqual(logic.other_player(player=player),'X')
 
 
 if __name__ == '__main__':
