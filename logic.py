@@ -61,7 +61,6 @@ def update_board(board,i,j,char):
         return board
     if board[i][j] == None:
         board[i][j] = char
-        print("Check", board[i])
         return board, False
     else:
         print("Illegal move!")
