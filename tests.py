@@ -16,6 +16,14 @@ class TestLogic(unittest.TestCase):
         player = 'O'
         self.assertEqual(logic.other_player(player=player),'X')
 
+    def test_update_board(self):
+        board = [
+            ['X', None, 'O'],
+            [None, 'X', None],
+            [None, 'O', None],
+        ]
+        test_case_board = ([['X', 'X', 'O'],[None, 'X', None],[None, 'O', None]],False)
+        self.assertEqual(logic.update_board(board,i=1,j=2,char='X'),test_case_board)
 
 if __name__ == '__main__':
     unittest.main()

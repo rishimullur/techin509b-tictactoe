@@ -10,7 +10,7 @@ def make_empty_board():
         [None, None, None],
     ]
 
-
+# Main logic for the winner of a given board
 def get_winner(board):
     """Determines the winner of the given board.
     Returns 'X', 'O', or None."""
@@ -20,7 +20,7 @@ def get_winner(board):
             return 'X'
         elif i[0]==i[1]==i[2]=='O':
             print('O won')
-            return '0'
+            return 'O'
 
     for j in range(3):
     # print(board[0][j])
@@ -29,15 +29,15 @@ def get_winner(board):
             return 'X'
         elif board[0][j]==board[1][j]==board[j]=='O':
             print('O won')
-            return '0'
+            return 'O'
 
     if board[0][0]==board[1][1]==board[2][2]=='X':
         print('X won')
         return 'X'
     elif board[0][0]==board[1][1]==board[2][2]=='0':
-        print('0 won')
-        return '0'
-    return None  # FIXME
+        print('O won')
+        return 'O'
+    return None  
 
 
 def other_player(player):
@@ -49,18 +49,23 @@ def other_player(player):
 
 
 def update_board(board,i,j,char):
+    """Updates the playing board to account for the new move of a user"""
+    #Making the row and column accept easier row/column values for users
     i = i-1
     j = j-1
+    if i < 0 or j < 0:
+        print("No such row or column")
+        return board
     if i >=3 or j >=3:
         print("No such row or column")
         return board
     if board[i][j] == None:
         board[i][j] = char
         print("Check", board[i])
-        return board
+        return board, False
     else:
         print("Illegal move!")
-        return board
+        return board, True
 
 
 def show_current_board(board):
