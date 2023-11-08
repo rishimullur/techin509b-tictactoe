@@ -37,7 +37,17 @@ def get_winner(board):
     elif board[0][0]==board[1][1]==board[2][2]=='0':
         print('O won')
         return 'O'
-    return None  
+    
+    if board[0][2] == board[1][1] == board[2][0] == 'X':
+        return 'X'
+    elif board[0][2] == board[1][1] == board[2][0] == 'O':
+        return 'O'
+    
+    # Check for a draw
+    for row in board:
+        if None in row:
+            return None
+    return 'Draw'  
 
 
 def other_player(player):

@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     while winner == None:
         print("-------------------------------------")
-        logging.info(char,"Turn")
+        logging.info("Turn Begins")
         print("Begin Turn!")
         print("It's", char, "turn!")
         show_current_board(board=board)
@@ -27,5 +27,8 @@ if __name__ == '__main__':
         if is_illegal!= True:
             char = other_player(player = char)
         winner = get_winner(board)
-        logging.info(winner,"Was the winner")
+        if winner == 'Draw':
+            print("Game Draw")
+        else:
+            logging.info("Winner")
 
