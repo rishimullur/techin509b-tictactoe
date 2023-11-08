@@ -3,15 +3,19 @@
 # For core game logic, see logic.py.
 
 from logic import make_empty_board, get_winner, show_current_board ,update_board, other_player
+import logging
 
 if __name__ == '__main__':
     board = make_empty_board()
     winner = None
     # Intiazlize the first move to X
     char = 'X'
+    logging.basicConfig(filename='logs/game.log', format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p' ,encoding='utf-8', level=logging.DEBUG)
+    logging.info('New Game begin')
 
     while winner == None:
         print("-------------------------------------")
+        logging.info(char,"Turn")
         print("Begin Turn!")
         print("It's", char, "turn!")
         show_current_board(board=board)
@@ -23,4 +27,5 @@ if __name__ == '__main__':
         if is_illegal!= True:
             char = other_player(player = char)
         winner = get_winner(board)
+        logging.info(winner,"Was the winner")
 
